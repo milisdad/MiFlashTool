@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Mi Flash Tool
+Name=Alat Bantu Nge-Flash Xiaomi
 Exec=/usr/bin/ignsdk -p /opt/ignsdk/MiFlashTool.ign
 Icon=/opt/ignsdk/MiFlashTool.ign/icons/app.png
 Terminal=false
