@@ -4,6 +4,46 @@
 <script type="text/javascript" src="qrc:///js/jquery.js"></script>
 <script type="text/javascript" src="qrc:///js/ign.js"></script>
 <script type="text/javascript">
+    var sys = ign.sys();
+	var fs = ign.filesystem();
+	var home = fs.homePath();
+	var res = "(*^*&$^&$)";
+	var adbServ = false;
+	var os = sys.exec('uname');
+    function exec(comm){
+		//sys.kill();
+		var exec = sys.exec(comm);
+		exec.out.connect(function(out){
+			if(out != res){
+				console.log(res);
+				res = out;
+				$('#out').append(res+"<br>");
+			}
+		});
+	}
+
+    function adb(){
+			$('#out').empty();
+				exec("bin/connadb");
+			}
+
+
+		function adbkill(){
+			exec("bin/killadb");
+		}
+    function fastboot(){
+            $('#out').empty();
+			$('.step').hide();
+			$('#step2').show();
+			$('.stepnav').removeClass('active');
+			$('#stepnav2').addClass('active');
+			exec("bin/fastboot");
+		}
+    function fastdev(){
+			$('#out').empty();
+				exec("bin/fastdev");
+			}
+
 </script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/bootstrap.min.js"></script>
@@ -49,7 +89,15 @@
 		</div>
 	</div>
 <div class="row">
-
+    <div class="col-md-3">
+		<div class="list-group">
+            <a href="#" class="list-group-item list-group-item-info disabled">
+			    <h3 class="panel-title">Tahapan Awal</h3>
+            </a>
+            <a href="#" id="stepnav1" class="list-group-item stepnav active">Koneksi Perangkat</a>
+			  <a href="#" id="stepnav2" class="list-group-item stepnav">Fastboot</a>
+			</div>
+		</div>
 		<div class="col-md-9">
 			<div class="panel panel-default">
 			  <div class="panel-heading">
@@ -57,26 +105,28 @@
 			  </div>
 			  <div class="panel-body">
 					<div id="s1" style="">
-						<div class="col-xs-4">
-					    <input type="text"  id="ip" class="form-control" placeholder="IP Devices...">
-					  </div>
-						<input type="submit" id="adb" onclick="adb()" value="Terhubung Ke Device" class="btn btn-primary">
-						<input type="submit" id="adb-kill" onclick="adbkill()" value="Memuat Ulang ADB Server" class="btn btn-primary"><hr>
+                        Prasyarat:
+						<ol type="1">
+                        <li>Buka "Settings | About Phone | MIUI version."</li>
+                        <li>Klik "MIUI version" sampai mode developer mode muncul.</li>
+                        <li>Buka "Setting | Additional setting | Developer Options" </li>
+                        <li>Buka "Developer options | USB debugging | OK"</li>
+                        <li>Aktifkan "Fastboot mode | Next 4x | Accept"</li>
+                        </ol>
+                        <input type="submit" id="adb" onclick="adb()" value="Terhubung Ke Device" class="btn btn-primary">
+						<input type="submit" id="adb-kill" onclick="adbkill()" value="Memuat Ulang ADB Server" class="btn btn-primary">
+                        <input type="submit" id="fastdev" onclick="fastdev()" value="Fastboot Devices" class="btn btn-primary">
+						<input type="submit" id="adb-kill" onclick="adbkill()" value="Fastboot Reboot" class="btn btn-primary"><hr>
 					</div>
 			    <div id="out" style="height:100%"></div>
 			  </div>
 				<div class="panel-footer">
-					<input type="submit" id="step1" onclick="backupdb()" value="Next" class="btn btn-primary step" style="">
+					<input type="submit" id="step1" onclick="fastboot()" value="Next" class="btn btn-primary step" style="">
 					<input type="submit" id="step2" onclick="hash()" value="Next" class="btn btn-primary step" style="display:none">
 				</div>
 			</div>
-			<!--
-			<input type="submit" id="backupdb" value="backupdb"><br>
-			<input type="submit" id="chksum" value="Check HASH"><br>
-		-->
-			<!-- page -->
-
 		</div>
+
 	</div>
-</body>
-</html>
+    </body>
+    </html>

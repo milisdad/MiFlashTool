@@ -1,0 +1,3 @@
+#!/bin/bash
+adb reboot-bootloader
+echo "Reboot..............................OK"
