@@ -4,12 +4,79 @@
 <script type="text/javascript" src="qrc:///js/jquery.js"></script>
 <script type="text/javascript" src="qrc:///js/ign.js"></script>
 <script type="text/javascript">
-	$(function(){
-		document.write("hello world");
-	})
 </script>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="container">
+	<div class="row">
+		<div class="col-nav-12">
+			<nav class="navbar navbar-default" role="navigation">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			     <a class="navbar-brand" href="#" style="padding-top:5px"><img src="icons/icon.png"> MiFlashTool</a>
+			    </div>
 
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li class="active"><a href="index.html">Persiapan</a></li>
+			        <li><a href="flash.html">Nge-Flash</a></li>
+			      </ul>
+
+			      <ul class="nav navbar-nav navbar-right">
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Seting <span class="caret"></span></a>
+			          <ul class="dropdown-menu" role="menu">
+									<li><a href="#" onclick="reset()">Reset Semua Data</a></li>
+			            <li><a href="#" onclick="ign.getToggleFullScreen()">Layar Penuh</a></li>
+			            <li><a href="#" onclick="ign.quit()">Keluar</a></li>
+			          </ul>
+			        </li>
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+
+		</div>
+	</div>
+<div class="row">
+
+		<div class="col-md-9">
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">Persiapan Perangkat</h3>
+			  </div>
+			  <div class="panel-body">
+					<div id="s1" style="">
+						<div class="col-xs-4">
+					    <input type="text"  id="ip" class="form-control" placeholder="IP Devices...">
+					  </div>
+						<input type="submit" id="adb" onclick="adb()" value="Terhubung Ke Device" class="btn btn-primary">
+						<input type="submit" id="adb-kill" onclick="adbkill()" value="Memuat Ulang ADB Server" class="btn btn-primary"><hr>
+					</div>
+			    <div id="out" style="height:100%"></div>
+			  </div>
+				<div class="panel-footer">
+					<input type="submit" id="step1" onclick="backupdb()" value="Next" class="btn btn-primary step" style="">
+					<input type="submit" id="step2" onclick="hash()" value="Next" class="btn btn-primary step" style="display:none">
+				</div>
+			</div>
+			<!--
+			<input type="submit" id="backupdb" value="backupdb"><br>
+			<input type="submit" id="chksum" value="Check HASH"><br>
+		-->
+			<!-- page -->
+
+		</div>
+	</div>
 </body>
 </html>
