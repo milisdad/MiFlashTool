@@ -25,9 +25,15 @@
 			$('#out').empty();
 				exec("bin/connadb");
 			}
+   // function adbkill(){
+	//		exec("bin/killadb");
+     //   }
     function adbkill(){
-			exec("bin/killadb");
-        }
+    	$('#out').empty();
+		exec("bin/killadb");
+		$('#fastdev').attr('disabled');
+		$('#fast_reboot').attr('disabled')
+	}
     function fastboot(){
             $('#out').empty();
 			$('.step').hide();
