@@ -22,9 +22,22 @@
 	}
 
     function adb(){
-			$('#out').empty();
-				exec("bin/connadb");
-			}
+		$('#out').empty();
+		exec("bin/connadb");
+        $('#fastdev').attr('disabled');
+		$('#fast_reboot').attr('disabled')
+	}
+    function adbkill(){
+    	$('#out').empty();
+		exec("bin/killadb");
+		$('#fastdev').attr('disabled');
+		$('#fast_reboot').attr('disabled')
+	}
+
+   // function adb(){
+	//		$('#out').empty();
+	//			exec("bin/connadb");
+	//		}
    // function adbkill(){
 	//		exec("bin/killadb");
      //   }
