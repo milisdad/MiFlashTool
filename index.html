@@ -34,28 +34,26 @@
 		$('#fast_reboot').attr('disabled')
 	}
 
-   // function adb(){
-	//		$('#out').empty();
-	//			exec("bin/connadb");
-	//		}
-   // function adbkill(){
-	//		exec("bin/killadb");
-     //   }
-    //function adbkill(){
-    //	$('#out').empty();
-	//	exec("bin/killadb");
-	//	$('#fastdev').attr('disabled');
-	//	$('#fast_reboot').attr('disabled')
-	//}
+    function fastdev(){
+		$('#out').empty();
+		exec("bin/fastdev");
+	}
+	function fast_reboot(){
+		$('#out').empty();
+		exec("bin/fast_reboot");
+	}
 
     function fastboot(){
-            $('#out').empty();
-			$('.step').hide();
-			$('#step1').show();
-			$('.stepnav').removeClass('active');
-			$('#stepnav2').addClass('active');
-			exec("bin/fastboot");
-		}
+        $('#out').empty();
+        $('.step').hide();
+		$('#step1').show();
+        $('.stepnav').removeClass('active');
+        $('#stepnav2').addClass('active');
+		exec("bin/fastboot");
+		$('#fastdev').removeAttr('disabled');
+		$('#fast_reboot').removeAttr('disabled')
+	}
+
     function fastdev(){
 			$('#out').empty();
 				exec("bin/fastdev");
