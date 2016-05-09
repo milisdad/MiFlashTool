@@ -33,8 +33,22 @@
     sql_file = file;
     contact();
   }
-
-
+function image(){
+        $('#out').empty();
+        $('.step').hide();
+		$('#step1').show();
+        $('.stepnav').removeClass('active');
+        $('#stepnav2').addClass('active');
+		exec("bin/fastboot");
+	}
+function path(){
+        $('#out').empty();
+        $('.step').hide();
+		$('#step1').show();
+        $('.stepnav').removeClass('active');
+        $('#stepnav1').addClass('active');
+		exec("bin/fastboot");
+	}
 </script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/bootstrap.min.js"></script>
@@ -84,7 +98,7 @@
 				<a href="#" class="list-group-item list-group-item-info disabled">
 					Menu
 				</a>
-                 <a href="#" id="stepnav1" onclick="identity()" class="list-group-item stepnav">Lokasi Image</a>
+                 <a href="#" id="stepnav1" onclick="identity()" class="list-group-item stepnav active">Lokasi Image</a>
 				<a href="#" id="stepnav2" onclick="contact()" class="list-group-item stepnav">Lokasi Skrip</a>
 				<a href="#" id="stepnav3" onclick="status()" class="list-group-item stepnav">Status</a>
 
@@ -94,14 +108,14 @@
 			<div class="panel panel-default">
 
 				<div class="panel-heading">
-
                     <input type="submit" id="step1" onclick="openfile()" value="Buka Berkas" class="btn btn-primary" style="">
 				</div>
 				<div class="panel-body">
 					<table class="table table-striped tabel" id="out">
+                        <input type="submit" id="step1" onclick="image()" value="Next" class="btn btn-primary step" style="">
 
 					</table>
-
+<input type="submit" id="step2" onclick="path()" value="Back" class="btn btn-primary step" style="">
 				</div>
 			</div>
 
