@@ -50,8 +50,6 @@
         $('.stepnav').removeClass('active');
         $('#stepnav2').addClass('active');
 		exec("bin/fastboot");
-		$('#fastdev').removeAttr('disabled');
-		$('#fast_reboot').removeAttr('disabled')
 	}
 
     function fastdev(){
@@ -133,7 +131,6 @@
 			  </div>
 				<div class="panel-footer">
 					<input type="submit" id="step1" onclick="fastboot()" value="Next" class="btn btn-primary step" style="">
-					<input type="submit" id="step2" onclick="next_aja()" value="Next" class="btn btn-primary step" style="display:none">
 				</div>
 			</div>
 		</div>
